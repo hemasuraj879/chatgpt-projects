@@ -52,4 +52,14 @@ usermod -aG docker centos &>>$LOGFILE
 
 VALIDATE $? "centos user added to docker group"
 
+curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose &>>$LOGFILE
+
+VALIDATE $? "Docker compose repo added"
+
+chmod +x /usr/local/bin/docker-compose  &>>$LOGFILE
+
+VALIDATE $? "Docker compose file permissions added"
+
 echo -e "$R Please logout and login again $N"
+
+
